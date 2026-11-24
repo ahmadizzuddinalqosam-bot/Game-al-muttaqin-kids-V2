@@ -1,0 +1,16 @@
+{
+  "name": "Al Muttaqin Kids — Petualangan Kampung Al-Muttaqin",
+  "short_name": "Al Muttaqin Kids",
+  "description": "Game edukasi anak interaktif Majelis Ta'lim Al Muttaqin (v5.0)",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#F8F4E6",
+  "theme_color": "#0B6B3A",
+  "icons": [
+    {
+      "src": "assets/logo-majelis.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
