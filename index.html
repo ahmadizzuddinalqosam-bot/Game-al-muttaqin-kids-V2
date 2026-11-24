@@ -8,7 +8,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Al Muttaqin Kids — Belajar Islam Ceria, Tumbuh Berakhlak Mulia" />
   <meta property="og:description" content="Portal resmi Al Muttaqin Kids (Majelis Ta'lim Al Muttaqin): 18 Buku Pintar A5, Game 15 Misi Kebaikan, LKS Interaktif & Program Sahabat Jariyah." />
-  <meta property="og:image" content="https://ahmadizzuddinalqosam-bot.github.io/al-muttaqin-kids/assets/hero/MAM_HERO_KELUARGA_ALMUTTAQIN_V3.webp" />
+  <meta property="og:image" content="https://ahmadizzuddinalqosam-bot.github.io/al-muttaqin-kids/assets/hero/MAM_HERO_KELUARGA_ALMUTTAQIN_V4.webp" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" href="assets/logo/LOGO_AL_MUTTAQIN_MASTER_RESOLUSI_2000PX_TRANSPARAN.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -229,18 +229,29 @@
         linear-gradient(180deg, rgba(10, 24, 52, 0.62) 0%, rgba(12, 32, 46, 0.35) 100%);
     }
 
-    /* Clean Non-Overlapping Invisible Hotspot Buttons over Map Callouts */
+    /* Crisp Interactive Pill Pins on Clean Text-Free 3D Map */
     .map-hotspot {
       position: absolute; transform: translate(-50%, -50%);
-      width: 17%; height: 15%; border-radius: 18px;
-      background: transparent; border: 3px solid transparent;
-      cursor: pointer; z-index: 6; transition: border-color 0.18s, box-shadow 0.18s;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 11px 5px 6px; border-radius: 999px;
+      background: rgba(248, 244, 230, 0.95); color: var(--brand-emerald-deep);
+      border: 2.5px solid var(--brand-emerald-cover);
+      box-shadow: 0 6px 16px rgba(16, 40, 30, 0.34);
+      font-family: 'Poppins', sans-serif; font-size: 0.74rem; font-weight: 800;
+      cursor: pointer; z-index: 6; white-space: nowrap;
+      transition: transform 0.16s ease, background 0.16s ease, color 0.16s ease;
+    }
+    .map-hotspot b {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--brand-emerald-cover); color: #FFFFFF;
+      display: inline-flex; align-items: center; justify-content: center; font-size: 0.75rem;
     }
     .map-hotspot:hover, .map-hotspot.active {
-      border-color: var(--accent-gold-badge);
-      box-shadow: 0 0 0 4px rgba(212, 160, 23, 0.35);
-      background: rgba(255, 243, 196, 0.14);
+      background: var(--accent-gold-badge); color: var(--text-charcoal);
+      border-color: #FFFFFF; transform: translate(-50%, -50%) scale(1.09); z-index: 8;
     }
+    .map-hotspot:hover b, .map-hotspot.active b { background: var(--brand-emerald-deep); color: #FFF3C4; }
+    @media (max-width: 640px) { .map-hotspot span { display: none; } .map-hotspot { padding: 4px; } }
     .atmo-pill-overlay {
       position: absolute; bottom: 14px; left: 14px; z-index: 7;
       background: rgba(18, 90, 62, 0.92); color: #FFFFFF;
@@ -396,6 +407,7 @@
 
     @media (max-width: 980px) {
       .hero-grid, .world-layout, .media-lks-grid, .jariyah-grid, .footer-grid, .schedule-grid { grid-template-columns: 1fr; }
+      #merchandise > .container > div[style*='grid-template-columns'] { grid-template-columns: 1fr !important; }
       .hero-pillars, .kpi-grid, .char-grid { grid-template-columns: repeat(2, 1fr); }
       .loc-thumbs-row { grid-template-columns: repeat(3, 1fr); }
       .nav-links {
@@ -463,9 +475,9 @@
         </div>
 
         <div class="hero-visual-card">
-          <img src="assets/hero/MAM_HERO_KELUARGA_ALMUTTAQIN_V3.webp" alt="Musholla Al-Muttaqin dan 4 Karakter Keluarga Al-Muttaqin (Kak Zahra, Al Qosam, Abi, Umi hijab hijau muda)" class="main-hero" />
+          <img src="assets/hero/MAM_HERO_KELUARGA_ALMUTTAQIN_V4.webp" alt="Musholla Al-Muttaqin dan 4 Karakter Keluarga Al-Muttaqin (Kak Zahra, Al Qosam, Abi, Umi hijab hijau muda)" class="main-hero" />
           <div class="hero-highlight-bar">
-            <img src="assets/covers/MAM_COV_MAMI01_V3.webp" alt="Sampul Buku MAM-I-01 Fiqih Ibadah Praktis" />
+            <img src="assets/covers/MAM_COV_MAMI01_V4.webp" alt="Sampul Buku MAM-I-01 Fiqih Ibadah Praktis" />
             <div>
               <span class="book-status st-done">SELESAI 100% • Rp35.000 (74 HAL A5)</span>
               <h4 style="color:var(--brand-emerald-deep);font-size:0.95rem;margin-top:3px;">MAM-I-01: Fiqih Ibadah Praktis (v3.2 Siap Cetak)</h4>
@@ -477,28 +489,28 @@
 
       <div class="hero-pillars">
         <a href="#kampung" class="pillar-shortcut">
-          <img src="assets/locations/MAM_LOC01_MUSHOLLA_EXTFRONT_V3.webp" alt="LOC-01 Musholla Al-Muttaqin" class="pillar-thumb" />
+          <img src="assets/locations/MAM_LOC01_MUSHOLLA_EXTFRONT_V4.webp" alt="LOC-01 Musholla Al-Muttaqin" class="pillar-thumb" />
           <div>
             <strong style="color:var(--brand-emerald-deep);display:block;font-size:0.9rem;">Kampung Al-Muttaqin</strong>
             <span style="font-size:0.78rem;color:var(--text-muted);">6 Lokasi + Galeri Interior &amp; 4 Waktu.</span>
           </div>
         </a>
         <a href="#buku" class="pillar-shortcut">
-          <img src="assets/covers/MAM_COV_MAMI02_V3.webp" alt="Katalog Buku ISO A5" class="pillar-thumb" />
+          <img src="assets/covers/MAM_COV_MAMI02_V4.webp" alt="Katalog Buku ISO A5" class="pillar-thumb" />
           <div>
             <strong style="color:var(--brand-emerald-deep);display:block;font-size:0.9rem;">18 Buku A5 + 3 Eksklusif</strong>
             <span style="font-size:0.78rem;color:var(--text-muted);">Paket Batch 1 Rp180rb (6 Modul).</span>
           </div>
         </a>
         <a href="https://ahmadizzuddinalqosam-bot.github.io/Game-Jejak-Kisah-Kampung-Al-Muttaqin/" target="_blank" rel="noopener" class="pillar-shortcut">
-          <img src="assets/locations/MAM_WORLD_GERBANG_KAMPUNG_V3.webp" alt="Game Jejak Kisah Kampung Al-Muttaqin" class="pillar-thumb" />
+          <img src="assets/locations/MAM_WORLD_GERBANG_KAMPUNG_V4.webp" alt="Game Jejak Kisah Kampung Al-Muttaqin" class="pillar-thumb" />
           <div>
             <strong style="color:var(--brand-emerald-deep);display:block;font-size:0.9rem;">Game 15 Misi Kebaikan ↗</strong>
             <span style="font-size:0.78rem;color:var(--text-muted);">Jejak Kisah Kampung (Live Web).</span>
           </div>
         </a>
         <a href="#sahabat-jariyah" class="pillar-shortcut">
-          <img src="assets/locations/MAM_LOC04_RUANGBELAJAR_V3.webp" alt="Transparansi Kas & Sahabat Jariyah" class="pillar-thumb" />
+          <img src="assets/locations/MAM_LOC04_RUANGBELAJAR_V4.webp" alt="Transparansi Kas & Sahabat Jariyah" class="pillar-thumb" />
           <div>
             <strong style="color:var(--brand-emerald-deep);display:block;font-size:0.9rem;">Transparansi &amp; Jariyah</strong>
             <span style="font-size:0.78rem;color:var(--text-muted);">Laporan Kas BKU &amp; ZISWAF TA 26/27.</span>
@@ -527,20 +539,20 @@
 
       <div class="world-layout">
         <div class="map-frame atmo-pagi" id="mapFrame">
-          <img src="assets/locations/MAM_WORLD_MAP_PANORAMA_V3.webp" alt="Peta Dunia Kampung Al-Muttaqin 6 Lokasi dengan LOC-01 Musholla Al-Muttaqin" />
+          <img src="assets/locations/MAM_WORLD_MAP_CLEAN_V4.webp" alt="Peta Dunia Kampung Al-Muttaqin 6 Lokasi dengan LOC-01 Musholla Al-Muttaqin" />
           <div class="map-atmo-overlay"></div>
-          <!-- Clean hotspots aligned directly over map callouts (zero double-pin clutter!) -->
-          <button class="map-hotspot active" style="left:59%;top:21%;" data-loc="0" aria-label="LOC-01 Musholla Al-Muttaqin"></button>
-          <button class="map-hotspot" style="left:82%;top:66%;" data-loc="1" aria-label="LOC-02 Rumah Al Qosam"></button>
-          <button class="map-hotspot" style="left:90%;top:25%;" data-loc="2" aria-label="LOC-03 SD Islam Al-Muttaqin"></button>
-          <button class="map-hotspot" style="left:36%;top:21%;" data-loc="3" aria-label="LOC-04 Ruang Belajar Islam"></button>
-          <button class="map-hotspot" style="left:51%;top:68%;" data-loc="4" aria-label="LOC-05 Taman Kampung"></button>
-          <button class="map-hotspot" style="left:23%;top:31%;" data-loc="5" aria-label="LOC-06 Pasar & Warung"></button>
+          <!-- Precision Interactive Pins on Clean 3D Map (100% Zero Double-Text!) -->
+          <button class="map-hotspot active" style="left:53%;top:43%;" data-loc="0" aria-label="LOC-01 Musholla Al-Muttaqin"><b>1</b><span>Musholla Al-Muttaqin</span></button>
+          <button class="map-hotspot" style="left:78%;top:69%;" data-loc="1" aria-label="LOC-02 Rumah Al Qosam"><b>2</b><span>Rumah Al Qosam</span></button>
+          <button class="map-hotspot" style="left:79%;top:24%;" data-loc="2" aria-label="LOC-03 SD Islam Al-Muttaqin"><b>3</b><span>SD Islam</span></button>
+          <button class="map-hotspot" style="left:25%;top:23%;" data-loc="3" aria-label="LOC-04 Ruang Belajar Islam"><b>4</b><span>Ruang Belajar</span></button>
+          <button class="map-hotspot" style="left:25%;top:71%;" data-loc="4" aria-label="LOC-05 Taman Kampung"><b>5</b><span>Taman Kampung</span></button>
+          <button class="map-hotspot" style="left:15%;top:49%;" data-loc="5" aria-label="LOC-06 Pasar & Warung"><b>6</b><span>Pasar &amp; Warung</span></button>
           <div class="atmo-pill-overlay" id="atmoLabel">Atmosfer: Pagi (Hangat &amp; Cerah)</div>
         </div>
 
         <div class="loc-detail-card" id="locDetailCard">
-          <img src="assets/locations/MAM_LOC01_MUSHOLLA_EXTFRONT_V3.webp" alt="LOC-01 Musholla Al-Muttaqin" class="loc-detail-photo" id="locPhoto" />
+          <img src="assets/locations/MAM_LOC01_MUSHOLLA_EXTFRONT_V4.webp" alt="LOC-01 Musholla Al-Muttaqin" class="loc-detail-photo" id="locPhoto" />
           <div class="loc-view-switch" id="locViewSwitch"></div>
           <div>
             <span class="loc-id-badge" id="locCode">LOC-01 • LOKASI IBADAH UTAMA</span>
@@ -563,28 +575,28 @@
       </div>
       <div class="char-grid">
         <article class="char-card">
-          <img src="assets/characters/MAM_CHR_ALQOSAM_FRONT_V3.webp" alt="CHAR-01 Al Qosam berpeci hijau" class="char-avatar" loading="lazy" />
+          <img src="assets/characters/MAM_CHR_ALQOSAM_FRONT_V4.webp" alt="CHAR-01 Al Qosam berpeci hijau" class="char-avatar" loading="lazy" />
           <span class="char-code">CHAR-01 • ADIK</span>
           <h3>Al Qosam</h3>
           <div style="font-size:0.8rem;font-weight:700;color:#8A6507;margin-bottom:6px;">8 Tahun • 115 cm</div>
           <p style="font-size:0.83rem;color:var(--text-muted);">Peci hijau (#185B43), baju koko putih berlis hijau, celana panjang hijau. Aktif, penasaran, ceria, dan pemantik pertanyaan belajar.</p>
         </article>
         <article class="char-card zahra-card">
-          <img src="assets/characters/MAM_CHR_ZAHRA_FRONT_V3.webp" alt="CHAR-02 Kak Zahra berhijab dusty pink" class="char-avatar" loading="lazy" />
+          <img src="assets/characters/MAM_CHR_ZAHRA_FRONT_V4.webp" alt="CHAR-02 Kak Zahra berhijab dusty pink" class="char-avatar" loading="lazy" />
           <span class="char-code" style="background:#C26B87;">CHAR-02 • KAKAK</span>
           <h3>Kak Zahra</h3>
           <div style="font-size:0.8rem;font-weight:700;color:#8A6507;margin-bottom:6px;">11 Tahun • 135 cm</div>
           <p style="font-size:0.83rem;color:var(--text-muted);">Hijab dusty pink (#E79BB3) berklip bunga putih, gamis panjang sopan. Cerdas, teliti, penyayang, dan sabar memberi contoh adab.</p>
         </article>
         <article class="char-card">
-          <img src="assets/characters/MAM_CHR_ABI_FRONT_V3.webp" alt="CHAR-03 Abi berpeci hitam dan berjanggut" class="char-avatar" loading="lazy" />
+          <img src="assets/characters/MAM_CHR_ABI_FRONT_V4.webp" alt="CHAR-03 Abi berpeci hitam dan berjanggut" class="char-avatar" loading="lazy" />
           <span class="char-code" style="background:#232323;">CHAR-03 • AYAH</span>
           <h3>Abi</h3>
           <div style="font-size:0.8rem;font-weight:700;color:#8A6507;margin-bottom:6px;">40 Tahun • 175 cm</div>
           <p style="font-size:0.83rem;color:var(--text-muted);">Peci hitam rapi, janggut terawat, koko krem/putih berrompi hijau tua. Bijaksana, humoris, dan membimbing syariat keluarga.</p>
         </article>
         <article class="char-card umi-card">
-          <img src="assets/characters/MAM_CHR_UMI_HIJABHIJAU_FRONT_V3.webp" alt="CHAR-04 Umi berhijab hijau muda sage green" class="char-avatar" loading="lazy" />
+          <img src="assets/characters/MAM_CHR_UMI_HIJABHIJAU_FRONT_V4.webp" alt="CHAR-04 Umi berhijab hijau muda sage green" class="char-avatar" loading="lazy" />
           <span class="char-code" style="background:#3D7A56;">CHAR-04 • IBU (HIJAB HIJAU)</span>
           <h3>Umi</h3>
           <div style="font-size:0.8rem;font-weight:700;color:#8A6507;margin-bottom:6px;">36 Tahun • 160 cm</div>
@@ -655,7 +667,7 @@
             <p style="font-size:0.83rem;color:#DCEEE4;margin-top:4px;" id="epDesc">
               0–3s Hook (Zahra) → 3–12s Masalah (Al Qosam) → 12–23s Penjelasan (Abi) → 23–28s Penerapan → 28–30s Pesan Penutup.
             </p>
-            <img src="assets/storyboard/MAM_EP001_SALAM_STRIP_V3.webp" alt="Storyboard 5 Panel Episode 001 Yuk Mengucapkan Salam" class="shorts-strip-img" loading="lazy" />
+            <img src="assets/storyboard/MAM_EP001_SALAM_STRIP_V4.webp" alt="Storyboard 5 Panel Episode 001 Yuk Mengucapkan Salam" class="shorts-strip-img" loading="lazy" />
             <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;">
               <button class="btn btn-gold btn-sm ep-switch" data-ep="ep1">Ep. 01: Adab Salam</button>
               <button class="btn btn-emerald btn-sm ep-switch" data-ep="ep2">Ep. 02 (QR Bab 2): Wudhu</button>
@@ -760,6 +772,18 @@
           <span class="sec-kicker">Katalog Resmi V5 • 4 Klaster Starter Kit Santri</span>
           <h2 class="sec-title">18 Merchandise Anak 3D Al Muttaqin Kids</h2>
           <p class="sec-sub">Seluruh perlengkapan belajar dan ibadah anak mengikuti standar adab syar'i, memakai arsitektur <strong>LOC-01 Musholla Al-Muttaqin</strong>, dan langsung terhubung ke WhatsApp Pengurus.</p>
+        </div>
+      </div>
+
+            <div style="display:grid;grid-template-columns:1.05fr 0.95fr;gap:20px;align-items:center;background:var(--bg-card-ivory);border:2.5px solid var(--accent-gold-badge);border-radius:24px;padding:18px;margin-bottom:20px;box-shadow:var(--shadow-warm);">
+        <img src="assets/merch/MAM_MERCH_STARTERKIT_3D_V4.webp" alt="Showcase 3D Starter Kit Merchandise Al Muttaqin Kids sesuai Adab Syar'i" style="width:100%;border-radius:16px;display:block;object-fit:cover;" loading="lazy" />
+        <div>
+          <span class="book-code-pill">STARTER KIT SANTRI • 3D SHOWCASE</span>
+          <h3 style="color:var(--brand-emerald-deep);font-size:1.28rem;margin:8px 0 6px;">Paket Lengkap Perlengkapan Ngaji &amp; Ibadah Anak</h3>
+          <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:12px;">
+            Terdiri dari Tas Ransel Cordura Waterproof, Tote Bag Kanvas Krem-Hijau, Tumbler Al Qosam &amp; Kak Zahra, Sajadah Empuk motif mihrab geometris <strong>(bebas wajah di area sujud)</strong>, Peci Hijau Al Qosam, serta Buku A5 &amp; Kotak Pensil.
+          </p>
+          <a href="https://wa.me/6285171108518?text=Assalamu'alaikum%20Pengurus%20Majelis%20Ta'lim%20Al%20Muttaqin,%20saya%20tertarik%20memesan%20Starter%20Kit%20Merchandise%20Santri%20Al%20Muttaqin%20Kids." target="_blank" rel="noopener" class="btn btn-emerald btn-sm">Tanya Paket Starter Kit via WA</a>
         </div>
       </div>
 
@@ -984,7 +1008,7 @@
         </div>
       </div>
       <div style="text-align:center;font-size:0.8rem;color:#A8D6BA;padding-top:18px;">
-        &copy; 2026/2027 Majelis Ta'lim Al Muttaqin • Al Muttaqin Kids Portal v3.0 Production • GitHub Pages Ready
+        &copy; 2026/2027 Majelis Ta'lim Al Muttaqin • Al Muttaqin Kids Portal v4.0 Studio 3D • GitHub Pages Ready
       </div>
     </div>
   </footer>
@@ -1001,12 +1025,12 @@
     const WA_PHONE = "6285171108518";
     const ASSETS = {
       logoBlack: "assets/logo/LOGO_AL_MUTTAQIN_MASTER_RESOLUSI_2000PX_TRANSPARAN.png",
-      loc01: "assets/locations/MAM_LOC01_MUSHOLLA_EXTFRONT_V3.webp", loc01Int: "assets/locations/MAM_LOC01_MUSHOLLA_INT_V3.webp",
-      loc02: "assets/locations/MAM_LOC02_RUMAHALQOSAM_EXTFRONT_V3.webp", loc02Int: "assets/locations/MAM_LOC02_RUANGKELUARGA_V3.webp",
-      loc03: "assets/locations/MAM_LOC03_SDISLAM_EXTFRONT_V3.webp", loc03Int: "assets/locations/MAM_LOC03_KELAS_V3.webp",
-      loc04: "assets/locations/MAM_LOC04_RUANGBELAJAR_V3.webp", loc05: "assets/locations/MAM_LOC05_TAMANKAMPUNG_V3.webp", loc06: "assets/locations/MAM_LOC06_PASAR_GANG_V3.webp",
-      cov01: "assets/covers/MAM_COV_MAMI01_V3.webp", cov02: "assets/covers/MAM_COV_MAMI02_V3.webp", cov03: "assets/covers/MAM_COV_MAMI03_V3.webp", cov04: "assets/covers/MAM_COV_MAMI04_V3.webp", cov05: "assets/covers/MAM_COV_MAMI05_V3.webp", cov06: "assets/covers/MAM_COV_MAMI06_V3.webp",
-      covIqro: "assets/covers/MAM_COV_IQRO_V3.webp", covImla: "assets/covers/MAM_COV_IMLA_V3.webp", covJuz: "assets/covers/MAM_COV_JUZAMMA_V3.webp"
+      loc01: "assets/locations/MAM_LOC01_MUSHOLLA_EXTFRONT_V4.webp", loc01Int: "assets/locations/MAM_LOC01_MUSHOLLA_INT_V4.webp",
+      loc02: "assets/locations/MAM_LOC02_RUMAHALQOSAM_EXTFRONT_V4.webp", loc02Int: "assets/locations/MAM_LOC02_RUANGKELUARGA_V4.webp",
+      loc03: "assets/locations/MAM_LOC03_SDISLAM_EXTFRONT_V4.webp", loc03Int: "assets/locations/MAM_LOC03_KELAS_V4.webp",
+      loc04: "assets/locations/MAM_LOC04_RUANGBELAJAR_V4.webp", loc05: "assets/locations/MAM_LOC05_TAMANKAMPUNG_V4.webp", loc06: "assets/locations/MAM_LOC06_PASARWARUNG_V4.webp",
+      cov01: "assets/covers/MAM_COV_MAMI01_V4.webp", cov02: "assets/covers/MAM_COV_MAMI02_V4.webp", cov03: "assets/covers/MAM_COV_MAMI03_V4.webp", cov04: "assets/covers/MAM_COV_MAMI04_V4.webp", cov05: "assets/covers/MAM_COV_MAMI05_V4.webp", cov06: "assets/covers/MAM_COV_MAMI06_V4.webp",
+      covIqro: "assets/covers/MAM_COV_IQRO_V4.webp", covImla: "assets/covers/MAM_COV_IMLA_V4.webp", covJuz: "assets/covers/MAM_COV_JUZAMMA_V4.webp"
     };
 
     // Mobile Nav
@@ -1021,7 +1045,7 @@
       { id: "LOC-03", name: "SD Islam Al-Muttaqin", tag: "LOC-03 • PENDIDIKAN FORMAL", views: [{ label: "Fasad Sekolah", img: ASSETS.loc03 }, { label: "Interior Kelas 4A", img: ASSETS.loc03Int }], desc: "Sekolah dasar Islami tempat Al Qosam dan Kak Zahra menuntut ilmu, membaca di perpustakaan, dan berteman dengan akhlak mulia.", rooms: ["Ruang Kelas 4A", "Perpustakaan", "Kantin Sehat", "Halaman & UKS"] },
       { id: "LOC-04", name: "Ruang Belajar Islam", tag: "LOC-04 • LITERASI & KAJIAN", views: [{ label: "Interior Ruang Baca", img: ASSETS.loc04 }], desc: "Ruang edukasi khusus penjelasan materi buku ISO A5, hafalan Juz 'Amma, dan diskusi interaktif bersama Dewan Asatidz.", rooms: ["Rak Buku A5", "Area Baca", "Papan Edukasi", "Pojok Diskusi"] },
       { id: "LOC-05", name: "Taman Kampung", tag: "LOC-05 • REKREASI & ALAM", views: [{ label: "Area Bermain & Gazebo", img: ASSETS.loc05 }], desc: "Area bermain anak, gazebo santai, olahraga ringan, serta pembelajaran menjaga kebersihan dan kelestarian lingkungan.", rooms: ["Area Bermain", "Gazebo Kampung", "Jalur Taman", "Tempat Sampah Pilah"] },
-      { id: "LOC-06", name: "Pasar & Gang Kampung", tag: "LOC-06 • INTERAKSI SOSIAL", views: [{ label: "Suasana Gang Melati & Warga", img: ASSETS.loc06 }], desc: "Pusat interaksi masyarakat, belajar menyapa tetangga, adab jual-beli jujur, dan tolong-menolong di Kampung Al-Muttaqin.", rooms: ["Kios Pasar", "Warung Sehat", "Gang Melati RT 05"] }
+      { id: "LOC-06", name: "Pasar & Warung Kampung", tag: "LOC-06 • INTERAKSI SOSIAL", views: [{ label: "Kios Pasar & Warung Sehat", img: ASSETS.loc06 }], desc: "Pusat interaksi masyarakat, belajar menyapa tetangga, adab jual-beli jujur, dan tolong-menolong di Kampung Al-Muttaqin.", rooms: ["Kios Pasar", "Warung Sehat", "Gang Melati RT 05"] }
     ];
 
     const locThumbs = document.getElementById("locThumbs");
