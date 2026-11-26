@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="theme-color" content="#0B6B3A" />
   <meta name="description" content="Al Muttaqin Kids — Petualangan Kampung Al-Muttaqin v5.0. Game edukasi interaktif ramah anak dari Majelis Ta'lim Al Muttaqin: Peta Kampung 3D, Jejak Kebaikan, 6 Klaster Kurikulum, Studio Hijaiyah Kak Zahra, dan Ujian Bintang MUMTAZ!" />
-  <title>Al Muttaqin Kids — Petualangan Kampung Al-Muttaqin v5.0</title>
+  <title>Al Muttaqin Kids V2.5 — Petualangan Kampung Al-Muttaqin (Seri Game #2)</title>
   <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="icon" type="image/svg+xml" href="assets/logo-majelis.svg" />
+  <link rel="icon" type="image/png" href="assets/icon-512.png" />
+  <link rel="apple-touch-icon" href="assets/icon-512.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Nunito:wght@600;700;800;900&family=Scheherazade+New:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@600;700&family=Nunito:wght@600;700;800;900&family=Scheherazade+New:wght@600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --cream: #F8F4E6;
@@ -95,14 +96,32 @@
     }
 
     .brand-logo {
-      width: 50px;
-      height: 50px;
-      border-radius: 14px;
+      width: 58px;
+      height: 58px;
+      border-radius: 12px;
       object-fit: contain;
-      background: var(--cream);
-      border: 2px solid var(--gold-sand);
-      padding: 3px;
+      background: #F8F4E6;
+      padding: 4px;
       flex-shrink: 0;
+    }
+
+    .footer-logo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .footer-logo {
+      width: 68px;
+      height: 68px;
+      object-fit: contain;
+    }
+
+    .rapor-logo {
+      width: 88px;
+      height: auto;
+      margin: 0 auto 10px;
+      display: block;
     }
 
     .brand-name {
@@ -519,8 +538,9 @@
     .map-pin.maxed .pin-lvl { background: var(--gold); color: #422700; }
 
     @media (max-width: 640px) {
-      .map-pin { padding: 4px 7px; font-size: 0.68rem; }
-      .map-pin .pin-name { display: none; }
+      .map-pin { padding: 3px 7px; font-size: 0.66rem; gap: 4px; }
+      .map-pin .pin-lvl { width: 17px; height: 17px; font-size: 0.65rem; }
+      .map-pin .pin-name { display: inline; max-width: 72px; overflow: hidden; text-overflow: ellipsis; }
     }
 
     /* KAMPUNG LOCATION GRID */
@@ -708,9 +728,33 @@
       border-radius: var(--radius-lg);
       padding: 20px 18px;
       box-shadow: var(--shadow-md);
-      touch-action: pan-y;
+      touch-action: none;
+      cursor: grab;
       user-select: none;
-      transition: transform 0.18s ease, border-color 0.18s ease;
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+    .sort-card.dragging { cursor: grabbing; transition: none; box-shadow: 0 20px 42px -12px rgba(11, 74, 48, 0.28); }
+    .bin-btn.drag-hot { transform: scale(1.04); filter: brightness(1.08); box-shadow: 0 0 0 4px rgba(246, 200, 76, 0.7); }
+    .sort-pause-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 6;
+      background: rgba(15, 63, 46, 0.74);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .sort-pause-overlay.open { display: flex; }
+    .sort-pause-card {
+      background: #FFFDF7;
+      border: 3px solid var(--gold);
+      border-radius: var(--radius-xl);
+      padding: 22px 24px;
+      max-width: 340px;
+      width: 100%;
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
     }
 
     .sort-card.ok-flash { border-color: #16A34A; background: #F0FDF4; transform: scale(1.03); }
@@ -855,12 +899,13 @@
     }
 
     .arabic-text {
-      font-family: 'Scheherazade New', 'Amiri', serif;
-      font-size: clamp(1.85rem, 4vw, 2.35rem);
+      font-family: 'Noto Naskh Arabic', 'LPMQ Isep Misbah', 'Scheherazade New', serif;
+      font-size: clamp(1.8rem, 3.8vw, 2.25rem);
       font-weight: 700;
-      line-height: 1.75;
+      line-height: 1.85;
       color: var(--emerald-deep);
       direction: rtl;
+      unicode-bidi: isolate;
     }
 
     .arabic-meaning {
@@ -957,10 +1002,12 @@
     }
 
     .hijaiyah-giant {
-      font-family: 'Scheherazade New', 'Amiri', serif;
-      font-size: 6rem;
-      line-height: 1.2;
+      font-family: 'Noto Naskh Arabic', 'LPMQ Isep Misbah', 'Scheherazade New', serif;
+      font-size: 5.8rem;
+      line-height: 1.32;
       color: #FFFDF7;
+      direction: rtl;
+      unicode-bidi: isolate;
       text-shadow: 0 4px 12px rgba(0,0,0,0.28);
     }
 
@@ -972,9 +1019,11 @@
     }
 
     .hijaiyah-word {
-      font-family: 'Scheherazade New', serif;
+      font-family: 'Noto Naskh Arabic', 'LPMQ Isep Misbah', 'Scheherazade New', serif;
       font-size: 2rem;
       color: #fff;
+      direction: rtl;
+      unicode-bidi: isolate;
       margin: 4px 0;
     }
 
@@ -1005,7 +1054,9 @@
     }
 
     .h-tile .ar {
-      font-family: 'Scheherazade New', serif;
+      font-family: 'Noto Naskh Arabic', 'LPMQ Isep Misbah', 'Scheherazade New', serif;
+      direction: rtl;
+      unicode-bidi: isolate;
       font-size: 2.1rem;
       line-height: 1.25;
       color: var(--emerald-deep);
@@ -1146,6 +1197,53 @@
       margin-bottom: 12px;
       border: 2px solid var(--border);
     }
+    .modal-warn {
+      display: none;
+      background: #FEF3C7;
+      border: 2px solid #F59E0B;
+      color: #78350F;
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      line-height: 1.45;
+    }
+    .modal-warn.show { display: block; }
+    .series-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 12px 0 10px;
+    }
+    .series-link {
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1.5px solid rgba(242, 201, 76, 0.65);
+      color: #FFFDF7;
+      padding: 6px 13px;
+      border-radius: var(--radius-pill);
+      font-size: 0.78rem;
+      font-weight: 800;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .series-link:hover { background: rgba(242, 201, 76, 0.28); transform: translateY(-1px); }
+    .series-link.active { background: var(--gold); color: #3D2400; border-color: #F6C84C; }
+    .arab-speak-btn {
+      margin-top: 8px;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: var(--radius-pill);
+      border: 1.5px solid #B7DEC9;
+      background: var(--emerald-soft);
+      color: var(--emerald-deep);
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 0.78rem;
+      cursor: pointer;
+    }
+    .arab-speak-btn:hover { background: #D3ECE0; }
 
     .name-input {
       width: 100%;
@@ -1226,19 +1324,25 @@
           onerror="handleLogoFallback(this)"
         />
         <div>
-          <div class="brand-name">Al Muttaqin Kids</div>
-          <div class="brand-org">Majelis Ta'lim Al Muttaqin • v5.0</div>
+          <div class="brand-name">Al Muttaqin Kids <span style="color:var(--gold);font-size:0.86em;">V2.5</span></div>
+          <div class="brand-org">Majelis Ta'lim Al Muttaqin • Seri Game #2</div>
         </div>
       </div>
 
       <div class="hud-pills">
         <div id="seedPill" class="seed-pill" title="Biji Kebaikan yang terkumpul">
-          <img src="assets/MAM_UI_REWARD_MEDAL_SEEDS_V1.2.jpg" alt="Biji Kebaikan" />
+          <img src="assets/ui-biji.jpg" alt="Biji Kebaikan" onerror="this.onerror=null;this.src='assets/MAM_UI_REWARD_MEDAL_SEEDS_V1.2.jpg';" />
           <span id="seedCount">0</span>
           <span>Biji</span>
         </div>
+        <button id="bgmBtn" class="hud-btn" type="button" onclick="toggleBgm()">
+          <span id="bgmLabel">Musik: Aktif</span>
+        </button>
         <button id="soundBtn" class="hud-btn" type="button" onclick="toggleSound()">
           <span id="soundLabel">Suara: Aktif</span>
+        </button>
+        <button id="fsBtn" class="hud-btn" type="button" onclick="toggleAppFullscreen()">
+          <span id="fsLabel">&#9974; Layar Penuh</span>
         </button>
         <button class="hud-btn" type="button" onclick="openParentGate()">
           <span>Kontrol</span>
@@ -1319,7 +1423,7 @@
             <h2 class="section-title">Keluarga Al-Muttaqin (Sahabat Belajarmu)</h2>
             <p class="section-sub">Ketuk tiap karakter untuk mendengarkan sapaan hangat &amp; pesan kebaikan mereka.</p>
           </div>
-          <span class="pill-badge">Canon Resmi v5.0</span>
+          <span class="pill-badge">Canon Resmi Keluarga Al-Muttaqin</span>
         </div>
         <div id="familyGrid" class="family-grid"></div>
       </section>
@@ -1343,6 +1447,7 @@
         <span>Amanah: <strong id="sortLives">3 / 3</strong></span>
         <span>Kombo: <strong id="sortCombo">x0</strong></span>
         <span>Waktu: <strong id="sortTimer">60 dtk</strong></span>
+        <button id="sortPauseBtn" class="hud-btn" style="min-height:36px;padding:0 12px;" type="button" onclick="toggleSortPause()">Jeda (P)</button>
       </div>
 
       <div id="sortArena" class="sort-arena">
@@ -1353,6 +1458,14 @@
           alt=""
           onerror="this.onerror=null;this.src='assets/MAM_LOC01_MUSHOLLA_EXTFRONT_V1.2.jpg';"
         />
+
+        <div id="sortPauseOverlay" class="sort-pause-overlay">
+          <div class="sort-pause-card">
+            <h3 style="margin:0 0 6px;color:var(--emerald-deep);">Permainan Dijeda</h3>
+            <p style="margin:0 0 14px;font-size:0.88rem;font-weight:700;color:var(--muted);">Istirahat sebentar ya, waktu dan kombomu aman menunggu!</p>
+            <button class="btn btn-emerald" style="width:100%;" type="button" onclick="toggleSortPause()">Lanjutkan Misi</button>
+          </div>
+        </div>
 
         <div id="sortActiveBox">
           <div id="sortCard" class="sort-card">
@@ -1492,6 +1605,12 @@
 
       <div id="examRaporPane" class="hidden">
         <div class="rapor-card">
+          <img
+            class="rapor-logo"
+            src="assets/logo.png"
+            alt="Logo Majelis Ta'lim Al Muttaqin"
+            onerror="handleStackedLogoFallback(this)"
+          />
           <div style="font-size:0.84rem; font-weight:900; color:var(--emerald); letter-spacing:1px; text-transform:uppercase;">
             Majelis Ta'lim Al Muttaqin • Rapor Digital Santri
           </div>
@@ -1503,13 +1622,15 @@
             <strong id="raporTotalScore" style="font-size:1.45rem; color:#784800;">100 / 100</strong>
             <span id="raporPredikat" class="pill-badge" style="background:var(--emerald); color:#fff;">MUMTAZ!</span>
           </div>
+          <div id="raporDateLine" style="font-size:0.82rem; font-weight:800; color:var(--muted); margin-top:4px;"></div>
           <p id="raporMessage" style="max-width:520px; margin:10px auto 0; font-weight:700; color:var(--muted);"></p>
 
           <div id="raporRubrics" class="rubric-list"></div>
 
           <div class="no-print" style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:18px;">
             <button class="btn btn-gold" type="button" onclick="window.print()">Cetak / Simpan PDF Rapor</button>
-            <button class="btn btn-emerald" type="button" onclick="startExam()">Ulangi Ujian</button>
+            <button class="btn btn-emerald" type="button" onclick="startExam()">Ulangi Ujian (Soal Acak)</button>
+            <button class="btn btn-outline" type="button" onclick="renderExamIntro()">Ganti Nama Santri</button>
             <button class="btn btn-soft" type="button" onclick="switchView('home')">Kembali ke Kampung</button>
           </div>
         </div>
@@ -1518,6 +1639,9 @@
 
     <!-- FOOTER RESMI -->
     <footer class="footer">
+      <div class="footer-logo-wrap">
+        <img class="footer-logo" src="assets/logo-reverse.png" alt="Monogram Reverse Majelis Ta'lim Al Muttaqin" />
+      </div>
       <div style="font-weight:900; font-size:1.05rem;">Majelis Ta'lim Al Muttaqin — 5 Pilar Family Ecosystem</div>
       <div class="ecosystem-pills">
         <span class="eco-pill current">Al Muttaqin Kids</span>
@@ -1526,9 +1650,15 @@
         <span class="eco-pill">Al Muttaqin Moms</span>
         <span class="eco-pill">Al Muttaqin Fathers</span>
       </div>
+      <div style="font-size:0.82rem;font-weight:800;color:#FCE8A6;margin-top:8px;">Serial Resmi Al Muttaqin Games (3 Game Rilis):</div>
+      <div class="series-links">
+        <a class="series-link" href="https://ahmadizzuddinalqosam-bot.github.io/Game-Jejak-Kisah-Kampung-Al-Muttaqin/" target="_blank" rel="noopener">Game 1: Jejak Kisah Kampung</a>
+        <span class="series-link active">Game 2: Petualangan Kampung V2.5 (Aktif)</span>
+        <a class="series-link" href="https://ahmadizzuddinalqosam-bot.github.io/Game-Al-Muttaqin-Kids-V3/" target="_blank" rel="noopener">Game 3: Full 3D Super Hub</a>
+      </div>
       <div class="footer-addr">
         Sekretariat: Rawa Buaya, Cengkareng, Jakarta Barat, DKI Jakarta<br />
-        Progres tersimpan otomatis di perangkat ini • Mode Ramah Anak Tanpa Iklan
+        Progres tersimpan otomatis &amp; mendukung mode offline (PWA) • Ramah Anak Tanpa Iklan
       </div>
     </footer>
   </div>
@@ -1542,7 +1672,8 @@
         <span id="locModalStage" class="pill-badge">Tahap 0 / 3</span>
       </div>
       <p id="locModalDesc" style="margin:0 0 12px; font-weight:700; color:var(--muted); font-size:0.92rem; line-height:1.45;"></p>
-      <div id="locModalMentor" style="display:flex; align-items:center; gap:10px; background:var(--cream); padding:10px; border-radius:14px; margin-bottom:14px;"></div>
+      <div id="locModalMentor" style="display:flex; align-items:center; gap:10px; background:var(--cream); padding:10px; border-radius:14px; margin-bottom:12px;"></div>
+      <div id="locModalWarn" class="modal-warn"></div>
       <div style="display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap;">
         <button class="btn btn-soft" type="button" onclick="closeLocModal()">Tutup</button>
         <button id="locModalUpgradeBtn" class="btn btn-gold" type="button">Tingkatkan</button>
@@ -1574,14 +1705,13 @@
 
     // Smart logo fallback (Audit F-06: prioritize official logo.png / logo.jpg if dropped into assets/)
     function handleLogoFallback(img) {
-      const step = Number(img.dataset.step || 0);
-      if (step === 0) {
-        img.dataset.step = '1';
-        img.src = 'assets/logo.jpg';
-      } else {
-        img.onerror = null;
-        img.src = 'assets/logo-majelis.svg';
-      }
+      img.onerror = null;
+      img.src = 'assets/logo.jpg';
+    }
+
+    function handleStackedLogoFallback(img) {
+      img.onerror = null;
+      img.src = 'assets/logo.jpg';
     }
 
     // ==================== CANON DATA ====================
@@ -1616,7 +1746,7 @@
       {
         id: 'loc1',
         code: 'LOC-01',
-        name: 'Musholla Al-Muttaqin',
+        name: 'Musholla Al-Muttaqin', shortName: 'Musholla',
         pinX: 25, pinY: 40,
         costs: [10, 20, 35],
         img: 'assets/MAM_LOC01_MUSHOLLA_EXTFRONT_V1.2.jpg',
@@ -1628,7 +1758,7 @@
       {
         id: 'loc2',
         code: 'LOC-02',
-        name: 'Rumah Keluarga',
+        name: 'Rumah Keluarga', shortName: 'Rumah',
         pinX: 46, pinY: 24,
         costs: [10, 20, 35],
         img: 'assets/MAM_LOC02_RUMAH_INTERIOR_V1.2.jpg',
@@ -1640,7 +1770,7 @@
       {
         id: 'loc3',
         code: 'LOC-03',
-        name: 'Sekolah & Studio Mengaji',
+        name: 'Sekolah & Studio Mengaji', shortName: 'Studio',
         pinX: 71, pinY: 34,
         costs: [12, 24, 38],
         img: 'assets/MAM_LOC03_STUDIO_HIJAIYAH_V1.2.jpg',
@@ -1652,7 +1782,7 @@
       {
         id: 'loc4',
         code: 'LOC-04',
-        name: 'Taman & Tempat Wudhu',
+        name: 'Taman & Tempat Wudhu', shortName: 'Taman',
         pinX: 58, pinY: 47,
         costs: [12, 24, 38],
         img: 'assets/MAM_LOC04_TAMAN_WUDHU_V1.2.jpg',
@@ -1664,7 +1794,7 @@
       {
         id: 'loc5',
         code: 'LOC-05',
-        name: 'Saung Ilmu Kampung',
+        name: 'Saung Ilmu Kampung', shortName: 'Saung',
         pinX: 50, pinY: 66,
         costs: [15, 28, 42],
         img: 'assets/MAM_LOC03_STUDIO_HIJAIYAH_V1.2.jpg',
@@ -1676,7 +1806,7 @@
       {
         id: 'loc6',
         code: 'LOC-06',
-        name: 'Pasar Berkah Kampung',
+        name: 'Pasar Berkah Kampung', shortName: 'Pasar',
         pinX: 78, pinY: 57,
         costs: [15, 28, 45],
         img: 'assets/MAM_WORLD_MAP_KAMPUNG_6LOC_V1.2.jpg',
@@ -1716,11 +1846,11 @@
         rightLabel: 'Kurang Tepat',
         items: [
           { title: 'Masuk Kaki Kanan & Berdoa', sub: 'Melangkah tenang ke Musholla Al-Muttaqin', side: 'left', img: 'assets/MAM_PRP_SAJADAH_V1.2.jpg', info: 'MasyaAllah! Masuk musholla dimulai dengan kaki kanan dan doa.' },
-          { title: 'Merapikan Sandal di Rak', sub: 'Tidak menghalangi pintu masuk', side: 'left', img: 'assets/MAM_PRP_SAJADAH_V1.2.jpg', info: 'Hebat! Sandal yang rapi memudahkan jamaah lain.' },
-          { title: 'Meluruskan Shaf Shalat', sub: 'Berdiri tenang saat iqamah', side: 'left', img: 'assets/MAM_PRP_SAJADAH_V1.2.jpg', info: 'Benar! Shaf yang lurus dan rapat tanda disiplin ibadah.' },
+          { title: 'Merapikan Sandal di Rak', sub: 'Tidak menghalangi pintu masuk', side: 'left', img: 'assets/prop-rak-sandal.jpg', info: 'Hebat! Sandal yang rapi memudahkan jamaah lain.' },
+          { title: 'Meluruskan Shaf Shalat', sub: 'Berdiri tenang saat iqamah', side: 'left', img: 'assets/prop-alat-sholat.jpg', info: 'Benar! Shaf yang lurus dan rapat tanda disiplin ibadah.' },
           { title: 'Meletakkan Mushaf di Rehal', sub: 'Tidak menaruh mushaf di lantai', side: 'left', img: 'assets/MAM_PRP_MUSHAF_REHAL_V1.2.jpg', info: 'Keren! Memuliakan Al-Qur\'an di tempat yang tinggi dan bersih.' },
           { title: 'Berlari & Berteriak Saat Shalat', sub: 'Mengganggu jamaah yang khusyuk', side: 'right', img: 'assets/MAM_PRP_SAJADAH_V1.2.jpg', info: 'Tepat! Di dalam musholla kita menjaga ketenangan.' },
-          { title: 'Melempar Sandal Sembarangan', sub: 'Berserakan di tangga teras', side: 'right', img: 'assets/MAM_PRP_SAJADAH_V1.2.jpg', info: 'Benar! Sandal harus ditaruh rapi agar tidak bikin orang tersandung.' },
+          { title: 'Melempar Sandal Sembarangan', sub: 'Berserakan di tangga teras', side: 'right', img: 'assets/prop-rak-sandal.jpg', info: 'Benar! Sandal harus ditaruh rapi agar tidak bikin orang tersandung.' },
           { title: 'Bermain Air di Tempat Wudhu', sub: 'Memboroskan air bersih', side: 'right', img: 'assets/MAM_PRP_KENDI_AIR_MUTLAQ_V1.2.jpg', info: 'Tepat! Kita harus hemat air saat berwudhu.' },
           { title: 'Mencoret Dinding Musholla', sub: 'Merusak kebersihan tempat ibadah', side: 'right', img: 'assets/MAM_PRP_TAS_BUKU_V1.2.jpg', info: 'Benar! Menjaga kebersihan musholla adalah tanggung jawab bersama.' }
         ]
@@ -1732,14 +1862,14 @@
         leftLabel: 'Anak Sholeh/Sholehah',
         rightLabel: 'Perlu Diperbaiki',
         items: [
-          { title: 'Mengucapkan Salam Masuk Rumah', sub: 'Mengetuk pintu lembut lalu salam', side: 'left', img: 'assets/MAM_CHR_ALQOSAM_3QFRONT_V1.2.jpg', info: 'MasyaAllah! Salam membawa keberkahan bagi seluruh rumah.' },
-          { title: 'Makan dengan Tangan Kanan', sub: 'Duduk rapi & membaca Bismillah', side: 'left', img: 'assets/MAM_CHR_UMI_3QFRONT_V1.2.jpg', info: 'Tepat! Adab makan Islami dimulai dengan Bismillah dan tangan kanan.' },
-          { title: 'Merapikan Buku Setelah Belajar', sub: 'Menyimpan pensil & buku di meja', side: 'left', img: 'assets/MAM_PRP_TAS_BUKU_V1.2.jpg', info: 'Hebat! Anak mandiri selalu merapikan alat belajarnya.' },
+          { title: 'Mengucapkan Salam Masuk Rumah', sub: 'Mengetuk pintu lembut lalu salam', side: 'left', img: 'assets/prop-salam-rumah.jpg', info: 'MasyaAllah! Salam membawa keberkahan bagi seluruh rumah.' },
+          { title: 'Makan dengan Tangan Kanan', sub: 'Duduk rapi & membaca Bismillah', side: 'left', img: 'assets/prop-piring-rapi.jpg', info: 'Tepat! Adab makan Islami dimulai dengan Bismillah dan tangan kanan.' },
+          { title: 'Merapikan Buku Setelah Belajar', sub: 'Menyimpan pensil & buku di meja', side: 'left', img: 'assets/prop-buku-cerita.jpg', info: 'Hebat! Anak mandiri selalu merapikan alat belajarnya.' },
           { title: 'Menjawab Panggilan Umi Lembut', sub: 'Segera datang dengan wajah ramah', side: 'left', img: 'assets/MAM_CHR_ZAHRA_3QFRONT_V1.2.jpg', info: 'Bagus sekali! Itu wujud bakti kepada orang tua.' },
           { title: 'Membantah Nasihat Abi', sub: 'Berbicara keras dengan nada kesal', side: 'right', img: 'assets/MAM_CHR_ABI_3QFRONT_V1.2.jpg', info: 'Tepat! Kepada orang tua kita berbicara lembut dan santun.' },
-          { title: 'Meninggalkan Mainan Berserakan', sub: 'Membiarkan ruang tamu berantakan', side: 'right', img: 'assets/MAM_PRP_TAS_BUKU_V1.2.jpg', info: 'Benar! Selesai bermain, mainan harus dirapikan kembali.' },
-          { title: 'Mengambil Makanan Berlebihan', sub: 'Tidak habis lalu dibuang', side: 'right', img: 'assets/MAM_CHR_UMI_3QFRONT_V1.2.jpg', info: 'Tepat! Ambil secukupnya agar tidak mubazir.' },
-          { title: 'Lupa Berdoa Sebelum Tidur', sub: 'Langsung tidur tanpa membersihkan diri', side: 'right', img: 'assets/MAM_CHR_ALQOSAM_3QFRONT_V1.2.jpg', info: 'Betul! Biasakan wudhu ringan dan doa sebelum tidur.' }
+          { title: 'Meninggalkan Mainan Berserakan', sub: 'Membiarkan ruang tamu berantakan', side: 'right', img: 'assets/prop-bola.jpg', info: 'Benar! Selesai bermain, mainan harus dirapikan kembali.' },
+          { title: 'Mengambil Makanan Berlebihan', sub: 'Tidak habis lalu dibuang', side: 'right', img: 'assets/prop-piring-rapi.jpg', info: 'Tepat! Ambil secukupnya agar tidak mubazir.' },
+          { title: 'Lupa Berdoa Sebelum Tidur', sub: 'Langsung tidur tanpa membersihkan diri', side: 'right', img: 'assets/prop-tempat-tidur.jpg', info: 'Betul! Biasakan wudhu ringan dan doa sebelum tidur.' }
         ]
       },
       {
@@ -1749,14 +1879,14 @@
         leftLabel: 'Sahabat Baik',
         rightLabel: 'Sikap Kurang Baik',
         items: [
-          { title: 'Antre Bergantian di Perosotan', sub: 'Sabar menunggu giliran teman', side: 'left', img: 'assets/MAM_CHR_ALQOSAM_3QFRONT_V1.2.jpg', info: 'Keren! Antre dengan tertib membuat permainan aman dan seru.' },
+          { title: 'Antre Bergantian di Perosotan', sub: 'Sabar menunggu giliran teman', side: 'left', img: 'assets/prop-bola.jpg', info: 'Keren! Antre dengan tertib membuat permainan aman dan seru.' },
           { title: 'Meminta Maaf Jika Bersalah', sub: 'Mengakui kesalahan dengan jujur', side: 'left', img: 'assets/MAM_CHR_ZAHRA_3QFRONT_V1.2.jpg', info: 'MasyaAllah! Meminta maaf adalah sifat pemberani.' },
           { title: 'Meminjamkan Pensil Warna', sub: 'Berbagi alat tulis dengan teman', side: 'left', img: 'assets/MAM_PRP_TAS_BUKU_V1.2.jpg', info: 'Hebat! Berbagi menumbuhkan persaudaraan.' },
           { title: 'Menolong Teman yang Terjatuh', sub: 'Membantu berdiri dan menanyakan kabar', side: 'left', img: 'assets/MAM_CHR_ALQOSAM_3QFRONT_V1.2.jpg', info: 'Luar biasa! Menolong sesama sangat dicintai Allah.' },
           { title: 'Mengejek Nama Teman', sub: 'Memanggil dengan julukan buruk', side: 'right', img: 'assets/MAM_CHR_ZAHRA_3QFRONT_V1.2.jpg', info: 'Tepat! Kita harus memanggil teman dengan nama baiknya.' },
           { title: 'Menyerobot Antrean Permainan', sub: 'Mendorong teman dari belakang', side: 'right', img: 'assets/MAM_CHR_ALQOSAM_3QFRONT_V1.2.jpg', info: 'Benar! Menyerobot bisa membahayakan diri sendiri dan teman.' },
           { title: 'Meminjam Barang Tanpa Izin', sub: 'Langsung mengambil dari tas teman', side: 'right', img: 'assets/MAM_PRP_TAS_BUKU_V1.2.jpg', info: 'Tepat! Wajib meminta izin dulu sebelum meminjam.' },
-          { title: 'Membuang Sampah di Rumput', sub: 'Bungkus jajan dibiarkan di taman', side: 'right', img: 'assets/MAM_PRP_KENDI_AIR_MUTLAQ_V1.2.jpg', info: 'Benar! Buang sampah pada tempatnya demi kebersihan kampung.' }
+          { title: 'Membuang Sampah di Rumput', sub: 'Bungkus jajan dibiarkan di taman', side: 'right', img: 'assets/prop-tempat-sampah.jpg', info: 'Benar! Buang sampah pada tempatnya demi kebersihan kampung.' }
         ]
       },
       {
@@ -1769,7 +1899,7 @@
           { title: 'Mengembalikan Uang Kembalian Lebih', sub: 'Jujur memberi tahu penjual', side: 'left', img: 'assets/MAM_UI_REWARD_MEDAL_SEEDS_V1.2.jpg', info: 'MasyaAllah! Jujur dalam harta adalah akhlak mulia.' },
           { title: 'Memilih Jajanan Halal & Bersih', sub: 'Memeriksa kebersihan & tanda halal', side: 'left', img: 'assets/MAM_CHR_UMI_3QFRONT_V1.2.jpg', info: 'Benar! Makanan halal dan thayyib menyehatkan tubuh.' },
           { title: 'Mengucap Terima Kasih ke Penjual', sub: 'Santun saat menerima barang', side: 'left', img: 'assets/MAM_CHR_ABI_3QFRONT_V1.2.jpg', info: 'Bagus sekali! Ucapan terima kasih menyenangkan hati orang lain.' },
-          { title: 'Menyisihkan Uang untuk Sedekah', sub: 'Berbagi sebagian uang saku', side: 'left', img: 'assets/MAM_UI_REWARD_MEDAL_SEEDS_V1.2.jpg', info: 'Hebat! Sedekah tidak mengurangi harta, malah menambah berkah.' },
+          { title: 'Menyisihkan Uang untuk Sedekah', sub: 'Berbagi sebagian uang saku', side: 'left', img: 'assets/ui-biji.jpg', info: 'Hebat! Sedekah tidak mengurangi harta, malah menambah berkah.' },
           { title: 'Menyembunyikan Barang Temuan', sub: 'Tidak melapor saat menemukan dompet', side: 'right', img: 'assets/MAM_CHR_ABI_3QFRONT_V1.2.jpg', info: 'Tepat! Barang temuan harus diserahkan ke orang tua atau pengurus.' },
           { title: 'Mengambil Buah Tanpa Membayar', sub: 'Mengambil saat penjual lengah', side: 'right', img: 'assets/MAM_UI_REWARD_MEDAL_SEEDS_V1.2.jpg', info: 'Benar! Mengambil hak orang lain tanpa izin dilarang agama.' },
           { title: 'Berbohong Soal Harga Belanjaan', sub: 'Melebihkan harga agar dapat sisa uang', side: 'right', img: 'assets/MAM_CHR_UMI_3QFRONT_V1.2.jpg', info: 'Tepat! Anak Al-Muttaqin selalu jujur melaporkan uang belanja.' },
@@ -2003,6 +2133,7 @@
       return {
         seeds: 15, // starter seeds so child can build their first building right away or save up!
         sound: true,
+        bgm: true,
         childName: '',
         kampung: { loc1: 0, loc2: 0, loc3: 0, loc4: 0, loc5: 0, loc6: 0 },
         masteredLessons: [],
@@ -2081,11 +2212,96 @@
       } catch (_) {}
     }
 
+    // Gentle Kalimba Pentatonic BGM (Anti-Stress & Friendly for Kids)
+    let bgmTimer = null;
+    const BGM_NOTES = [261.63, 293.66, 329.63, 392.0, 440.0, 523.25, 440.0, 392.0, 329.63, 293.66, 329.63, 392.0];
+    let bgmStep = 0;
+    function startBgmLoop() {
+      if (bgmTimer || !state.bgm) return;
+      bgmTimer = setInterval(() => {
+        if (!state.bgm || document.hidden) return;
+        try {
+          if (!audioCtx) {
+            const Ctx = window.AudioContext || window.webkitAudioContext;
+            audioCtx = new Ctx();
+          }
+          if (audioCtx.state === 'suspended') return;
+          const t = audioCtx.currentTime;
+          const freq = BGM_NOTES[bgmStep % BGM_NOTES.length];
+          bgmStep++;
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, t);
+          gain.gain.setValueAtTime(0.0001, t);
+          gain.gain.linearRampToValueAtTime(0.024, t + 0.04);
+          gain.gain.exponentialRampToValueAtTime(0.0008, t + 0.62);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(t);
+          osc.stop(t + 0.65);
+        } catch (_) {}
+      }, 720);
+    }
+    function stopBgmLoop() {
+      if (bgmTimer) { clearInterval(bgmTimer); bgmTimer = null; }
+    }
+    function toggleBgm() {
+      state.bgm = !state.bgm;
+      saveState();
+      if (state.bgm) { playTone('tap'); startBgmLoop(); } else { stopBgmLoop(); }
+      updateGlobalHUD();
+    }
+    window.addEventListener('pointerdown', () => {
+      if (state.bgm) {
+        try {
+          if (!audioCtx) { const Ctx = window.AudioContext || window.webkitAudioContext; audioCtx = new Ctx(); }
+          if (audioCtx.state === 'suspended') audioCtx.resume();
+        } catch (_) {}
+        startBgmLoop();
+      }
+    }, { once: true });
+
     function toggleSound() {
       state.sound = !state.sound;
       saveState();
       updateGlobalHUD();
       if (state.sound) playTone('tap');
+    }
+
+    function toggleAppFullscreen() {
+      playTone('tap');
+      const docEl = document.documentElement;
+      const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+      if (isFs) {
+        if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      } else {
+        if (docEl.requestFullscreen) docEl.requestFullscreen().catch(() => {});
+        else if (docEl.webkitRequestFullscreen) docEl.webkitRequestFullscreen();
+      }
+    }
+    function syncFsButton() {
+      const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+      const lbl = document.getElementById('fsLabel');
+      if (lbl) lbl.innerHTML = isFs ? '&#10005; Keluar Penuh' : '&#9974; Layar Penuh';
+    }
+    document.addEventListener('fullscreenchange', syncFsButton);
+    document.addEventListener('webkitfullscreenchange', syncFsButton);
+
+    function speakArabicText(text) {
+      playTone('tap');
+      if ('speechSynthesis' in window) {
+        try {
+          window.speechSynthesis.cancel();
+          const u = new SpeechSynthesisUtterance(text);
+          u.lang = 'ar-SA';
+          u.rate = 0.76;
+          window.speechSynthesis.speak(u);
+          return;
+        } catch (_) {}
+      }
+      playTone('ok');
     }
 
     // ==================== CONFETTI ENGINE ====================
@@ -2164,6 +2380,8 @@
       document.getElementById('seedCount').textContent = state.seeds;
       document.getElementById('soundLabel').textContent = state.sound ? 'Suara: Aktif' : 'Suara: Hening';
       document.getElementById('soundBtn').classList.toggle('muted', !state.sound);
+      document.getElementById('bgmLabel').textContent = state.bgm ? 'Musik: Aktif' : 'Musik: Hening';
+      document.getElementById('bgmBtn').classList.toggle('muted', !state.bgm);
       if (bumpSeed) {
         const pill = document.getElementById('seedPill');
         pill.classList.add('bump');
@@ -2210,7 +2428,8 @@
         pin.className = 'map-pin' + (lvl >= 3 ? ' maxed' : '');
         pin.style.left = loc.pinX + '%';
         pin.style.top = loc.pinY + '%';
-        pin.innerHTML = `<span class="pin-lvl">${lvl}</span><span class="pin-name">${loc.name}</span>`;
+        pin.title = `${loc.name} (Tahap ${lvl}/3)`;
+        pin.innerHTML = `<span class="pin-lvl">${lvl}</span><span class="pin-name">${window.innerWidth <= 640 ? loc.shortName : loc.name}</span>`;
         pin.onclick = () => openLocModal(loc.id);
         pinsLayer.appendChild(pin);
       });
@@ -2310,6 +2529,9 @@
         upBtn.onclick = () => upgradeLocation(locId);
       }
 
+      const warnEl = document.getElementById('locModalWarn');
+      warnEl.classList.remove('show');
+      warnEl.innerHTML = '';
       document.getElementById('locModal').classList.add('open');
     }
 
@@ -2324,7 +2546,10 @@
       const cost = loc.costs[lvl];
       if (state.seeds < cost) {
         playTone('warn');
-        alert(`Biji Kebaikan belum cukup (${state.seeds}/${cost}). Ayo mainkan Jejak Kebaikan, 6 Klaster, atau Studio Hijaiyah untuk mengumpulkan Biji!`);
+        const warnEl = document.getElementById('locModalWarn');
+        warnEl.innerHTML = `Biji Kebaikan belum cukup (<strong>${state.seeds}/${cost}</strong>). Ayo panen Biji dulu di Mode 1, 6 Klaster, atau Studio Hijaiyah!
+          <div style="margin-top:8px;"><button class="btn btn-emerald" style="min-height:38px;padding:0 14px;font-size:0.84rem;" type="button" onclick="closeLocModal();switchView('sortir');">Panen Biji di Jejak Kebaikan &#8594;</button></div>`;
+        warnEl.classList.add('show');
         return;
       }
       state.seeds -= cost;
@@ -2361,6 +2586,9 @@
         return;
       }
       state = defaultState();
+      sortState.levelIdx = 0;
+      hState.quizMode = false;
+      hState.quizScore = 0;
       saveState();
       closeParentGate();
       playTone('ok');
@@ -2390,7 +2618,7 @@
       return a;
     }
 
-    function initSortView() {
+    function renderSortLevelPicker() {
       const picker = document.getElementById('sortLevelPicker');
       picker.innerHTML = '';
       SORT_LEVELS.forEach((lv, idx) => {
@@ -2402,6 +2630,10 @@
         b.onclick = () => startSortLevel(idx);
         picker.appendChild(b);
       });
+    }
+
+    function initSortView() {
+      renderSortLevelPicker();
       startSortLevel(sortState.levelIdx);
     }
 
@@ -2411,6 +2643,20 @@
         sortState.timerId = null;
       }
       sortState.active = false;
+      sortState.paused = false;
+      if (typeof resetDragVisual === 'function') resetDragVisual();
+      const ov = document.getElementById('sortPauseOverlay');
+      if (ov) ov.classList.remove('open');
+      const pb = document.getElementById('sortPauseBtn');
+      if (pb) pb.textContent = 'Jeda (P)';
+    }
+
+    function toggleSortPause() {
+      if (!sortState.active) return;
+      playTone('tap');
+      sortState.paused = !sortState.paused;
+      document.getElementById('sortPauseOverlay').classList.toggle('open', sortState.paused);
+      document.getElementById('sortPauseBtn').textContent = sortState.paused ? 'Lanjut (P)' : 'Jeda (P)';
     }
 
     function startSortLevel(idx) {
@@ -2426,10 +2672,11 @@
         earned: 0,
         timeLeft: 60,
         timerId: null,
-        active: true
+        active: true,
+        paused: false
       };
 
-      document.querySelectorAll('.lvl-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
+      renderSortLevelPicker();
       document.getElementById('sortLevelName').textContent = `Lv.${idx + 1} ${lv.name}`;
       document.getElementById('binLeftLabel').textContent = lv.leftLabel;
       document.getElementById('binRightLabel').textContent = lv.rightLabel;
@@ -2446,7 +2693,7 @@
       renderSortCard();
 
       sortState.timerId = setInterval(() => {
-        if (!sortState.active) return;
+        if (!sortState.active || sortState.paused) return;
         sortState.timeLeft -= 1;
         renderSortHUD();
         if (sortState.timeLeft <= 0) {
@@ -2467,13 +2714,15 @@
         sortState.queue = shuffle(SORT_LEVELS[sortState.levelIdx].items);
       }
       const item = sortState.queue[0];
-      document.getElementById('sortCardImg').src = item.img;
+      const cardImg = document.getElementById('sortCardImg');
+      cardImg.onerror = function() { this.onerror = null; this.src = 'assets/MAM_PRP_SAJADAH_V1.2.jpg'; };
+      cardImg.src = item.img;
       document.getElementById('sortCardTitle').textContent = item.title;
       document.getElementById('sortCardSub').textContent = item.sub;
     }
 
     function chooseSort(side) {
-      if (!sortState.active) return;
+      if (!sortState.active || sortState.paused) return;
       const item = sortState.queue.shift();
       const card = document.getElementById('sortCard');
       const fb = document.getElementById('sortFeedback');
@@ -2498,6 +2747,7 @@
             state.completedSortLevels.push(sortState.levelIdx);
             saveState();
           }
+          renderSortLevelPicker();
           finishSortLevel(true, `Alhamdulillah! Target ${sortState.target} kartu tuntas. Total panen: +${sortState.earned} Biji Kebaikan!`);
           return;
         }
@@ -2536,19 +2786,63 @@
       }
     }
 
-    // Touch swipe & keyboard support for Jejak Kebaikan
-    let swipeStartX = 0;
+    // Unified Pointer Drag (Mouse + Touch) & Keyboard support for Jejak Kebaikan
+    let dragActive = false, dragStartX = 0, dragDeltaX = 0;
     const sortCardEl = document.getElementById('sortCard');
-    sortCardEl.addEventListener('touchstart', e => { swipeStartX = e.touches[0].clientX; }, { passive: true });
-    sortCardEl.addEventListener('touchend', e => {
-      const dx = e.changedTouches[0].clientX - swipeStartX;
-      if (Math.abs(dx) > 48) chooseSort(dx < 0 ? 'left' : 'right');
-    }, { passive: true });
+    const binLeftEl = document.getElementById('binLeftBtn');
+    const binRightEl = document.getElementById('binRightBtn');
+
+    function resetDragVisual() {
+      dragActive = false;
+      dragDeltaX = 0;
+      if (sortCardEl) {
+        sortCardEl.classList.remove('dragging');
+        sortCardEl.style.transform = '';
+      }
+      if (binLeftEl) binLeftEl.classList.remove('drag-hot');
+      if (binRightEl) binRightEl.classList.remove('drag-hot');
+    }
+
+    sortCardEl.addEventListener('pointerdown', e => {
+      if (!sortState.active || sortState.paused) return;
+      dragActive = true;
+      dragStartX = e.clientX;
+      dragDeltaX = 0;
+      sortCardEl.classList.add('dragging');
+      try { sortCardEl.setPointerCapture(e.pointerId); } catch (_) {}
+    });
+    sortCardEl.addEventListener('pointermove', e => {
+      if (!dragActive) return;
+      dragDeltaX = Math.max(-150, Math.min(150, e.clientX - dragStartX));
+      sortCardEl.style.transform = `translateX(${dragDeltaX}px) rotate(${dragDeltaX * 0.06}deg)`;
+      binLeftEl.classList.toggle('drag-hot', dragDeltaX < -42);
+      binRightEl.classList.toggle('drag-hot', dragDeltaX > 42);
+    });
+    const finishDrag = () => {
+      if (!dragActive) return;
+      const finalDx = dragDeltaX;
+      resetDragVisual();
+      if (Math.abs(finalDx) > 52) chooseSort(finalDx < 0 ? 'left' : 'right');
+    };
+    sortCardEl.addEventListener('pointerup', finishDrag);
+    sortCardEl.addEventListener('pointercancel', resetDragVisual);
 
     window.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        closeLocModal();
+        closeParentGate();
+        return;
+      }
+      if (e.key === 'Enter' && document.getElementById('parentModal').classList.contains('open')) {
+        confirmParentReset();
+        return;
+      }
       if (activeView === 'sortir' && sortState.active) {
-        if (e.key === 'ArrowLeft') chooseSort('left');
-        if (e.key === 'ArrowRight') chooseSort('right');
+        if (e.key === 'p' || e.key === 'P') { toggleSortPause(); return; }
+        if (!sortState.paused) {
+          if (e.key === 'ArrowLeft') chooseSort('left');
+          if (e.key === 'ArrowRight') chooseSort('right');
+        }
       }
     });
 
@@ -2596,6 +2890,7 @@
           <div class="arabic-box">
             <div class="arabic-text">${ls.arabic}</div>
             <div class="arabic-meaning">${ls.meaning}</div>
+            <button class="arab-speak-btn" type="button">&#128266; Dengar Lafal Arab</button>
           </div>
           <p style="margin:0; font-size:0.9rem; font-weight:700; line-height:1.5; color:var(--ink);">${ls.summary}</p>
           <div class="awas-box"><strong>Awas Keliru!</strong> ${ls.awas}</div>
@@ -2603,7 +2898,8 @@
             ${mastered ? '✓ Sudah Dipahami' : 'Saya Paham (+5 Biji Kebaikan)'}
           </button>
         `;
-        card.querySelector('button').onclick = () => {
+        card.querySelector('.arab-speak-btn').onclick = () => speakArabicText(ls.arabic);
+        card.querySelectorAll('button')[1].onclick = () => {
           if (!mastered) {
             state.masteredLessons.push(ls.id);
             addSeeds(5);
@@ -2624,10 +2920,17 @@
       selectedIdx: 0,
       quizMode: false,
       quizScore: 0,
-      quizAnswerIdx: 0
+      quizAnswerIdx: 0,
+      quizLocked: false,
+      quizChoices: []
     };
 
     function getVocalized(item, harakat) {
+      if (item.base === 'ا') {
+        if (harakat === 'fathah') return 'أَ';
+        if (harakat === 'kasrah') return 'إِ';
+        return 'أُ';
+      }
       return item.base + HARAKAT_MARK[harakat];
     }
 
@@ -2642,6 +2945,12 @@
       hState.harakat = h;
       document.querySelectorAll('.harakat-btn').forEach(b => b.classList.toggle('active', b.dataset.h === h));
       renderHijaiyahStudio();
+      if (hState.quizMode && hState.quizChoices.length > 0) {
+        const btns = document.querySelectorAll('#hQuizOptions .exam-opt');
+        hState.quizChoices.forEach((c, idx) => {
+          if (btns[idx]) btns[idx].textContent = `${getSoundLabel(c, hState.harakat)} (${c.name})`;
+        });
+      }
     }
 
     function renderHijaiyahStudio() {
@@ -2702,11 +3011,14 @@
     }
 
     function nextHijaiyahQuiz() {
-      const targetIdx = Math.floor(Math.random() * HIJAIYAH.length);
+      let targetIdx = Math.floor(Math.random() * HIJAIYAH.length);
+      if (targetIdx === hState.selectedIdx) targetIdx = (targetIdx + 1) % HIJAIYAH.length;
       hState.selectedIdx = targetIdx;
+      hState.quizLocked = false;
       const target = HIJAIYAH[targetIdx];
       const distractors = shuffle(HIJAIYAH.filter((_, i) => i !== targetIdx)).slice(0, 3);
       const choices = shuffle([target, ...distractors]);
+      hState.quizChoices = choices;
       hState.quizAnswerIdx = choices.findIndex(c => c.base === target.base);
 
       document.getElementById('hQuizScoreLabel').textContent = `Skor Sesi: ${hState.quizScore}`;
@@ -2723,17 +3035,24 @@
         btn.style.fontSize = '1.15rem';
         btn.textContent = `${getSoundLabel(c, hState.harakat)} (${c.name})`;
         btn.onclick = () => {
+          if (hState.quizLocked) return;
           const fb = document.getElementById('hQuizFeedback');
           if (idx === hState.quizAnswerIdx) {
+            hState.quizLocked = true;
             btn.classList.add('correct');
             hState.quizScore += 1;
-            addSeeds(3);
-            playTone('ok');
+            const milestone = (hState.quizScore % 5 === 0);
+            const reward = milestone ? 8 : 3;
+            addSeeds(reward);
+            document.getElementById('hQuizScoreLabel').textContent = `Skor Sesi: ${hState.quizScore}`;
+            playTone(milestone ? 'fanfare' : 'ok');
+            if (milestone) launchConfetti(36);
             fb.className = 'feedback-bar show ok';
-            fb.innerHTML = `<span>Tepat! Ini huruf ${target.name} (${getSoundLabel(target, hState.harakat)}). +3 Biji!</span>
+            fb.innerHTML = `<span>${milestone ? 'MasyaAllah! 5 Benar Beruntun! ' : 'Tepat! '}Ini huruf ${target.name} (${getSoundLabel(target, hState.harakat)}). +${reward} Biji!</span>
               <button class="btn btn-emerald" style="min-height:40px;padding:0 14px;" type="button" onclick="nextHijaiyahQuiz()">Huruf Berikutnya &#8594;</button>`;
           } else {
             btn.classList.add('wrong');
+            btn.disabled = true;
             playTone('warn');
             fb.className = 'feedback-bar show warn';
             fb.textContent = 'Hampir tepat! Perhatikan bentuk titik hurufnya lalu coba pilih lagi.';
@@ -2744,7 +3063,7 @@
     }
 
     // ==================== MODE 4: UJIAN BINTANG MUMTAZ ====================
-    let exam = { idx: 0, locked: false, scores: { teori: 0, tahfidz: 0, praktik: 0, adab: 0 } };
+    let exam = { idx: 0, locked: false, questions: [], scores: { teori: 0, tahfidz: 0, praktik: 0, adab: 0 } };
 
     function renderExamIntro() {
       document.getElementById('bestExamPill').textContent =
@@ -2762,7 +3081,17 @@
         state.childName = typed;
         saveState();
       }
-      exam = { idx: 0, locked: false, scores: { teori: 0, tahfidz: 0, praktik: 0, adab: 0 } };
+      // Acak urutan soal & urutan opsi jawaban agar santri benar-benar memahami materi
+      const shuffledQs = shuffle(EXAM_QUESTIONS).map(q => {
+        const tagged = q.options.map((text, origIdx) => ({ text, isCorrect: origIdx === q.answer }));
+        const mixed = shuffle(tagged);
+        return {
+          ...q,
+          options: mixed.map(m => m.text),
+          answer: mixed.findIndex(m => m.isCorrect)
+        };
+      });
+      exam = { idx: 0, locked: false, questions: shuffledQs, scores: { teori: 0, tahfidz: 0, praktik: 0, adab: 0 } };
       document.getElementById('examIntroPane').classList.add('hidden');
       document.getElementById('examRaporPane').classList.add('hidden');
       document.getElementById('examQuestionPane').classList.remove('hidden');
@@ -2775,8 +3104,8 @@
 
     function renderExamQuestion() {
       exam.locked = false;
-      const q = EXAM_QUESTIONS[exam.idx];
-      document.getElementById('examCounter').textContent = `Soal ${exam.idx + 1} / ${EXAM_QUESTIONS.length}`;
+      const q = exam.questions[exam.idx];
+      document.getElementById('examCounter').textContent = `Soal ${exam.idx + 1} / ${exam.questions.length}`;
       document.getElementById('examRubricTag').textContent = `Rubrik: ${q.rubricLabel}`;
       document.getElementById('examLivePoints').textContent = `Poin: ${currentExamTotal()} / 100`;
 
@@ -2805,7 +3134,7 @@
     function answerExam(chosenIdx, btn) {
       if (exam.locked) return;
       exam.locked = true;
-      const q = EXAM_QUESTIONS[exam.idx];
+      const q = exam.questions[exam.idx];
       const allBtns = document.querySelectorAll('#examOptions .exam-opt');
       const fb = document.getElementById('examFeedback');
 
@@ -2816,7 +3145,7 @@
         fb.className = 'feedback-bar show ok';
         fb.innerHTML = `<span>Benar! ${q.exp} (+${q.points} Poin)</span>
           <button class="btn btn-emerald" style="min-height:42px;" type="button" onclick="nextExamStep()">
-            ${exam.idx + 1 < EXAM_QUESTIONS.length ? 'Soal Berikutnya &#8594;' : 'Lihat Rapor MUMTAZ!'}
+            ${exam.idx + 1 < exam.questions.length ? 'Soal Berikutnya &#8594;' : 'Lihat Rapor MUMTAZ!'}
           </button>`;
       } else {
         btn.classList.add('wrong');
@@ -2825,7 +3154,7 @@
         fb.className = 'feedback-bar show warn';
         fb.innerHTML = `<span>Belum tepat. ${q.exp}</span>
           <button class="btn btn-emerald" style="min-height:42px;" type="button" onclick="nextExamStep()">
-            ${exam.idx + 1 < EXAM_QUESTIONS.length ? 'Soal Berikutnya &#8594;' : 'Lihat Rapor MUMTAZ!'}
+            ${exam.idx + 1 < exam.questions.length ? 'Soal Berikutnya &#8594;' : 'Lihat Rapor MUMTAZ!'}
           </button>`;
       }
       document.getElementById('examLivePoints').textContent = `Poin: ${currentExamTotal()} / 100`;
@@ -2833,7 +3162,7 @@
 
     function nextExamStep() {
       playTone('tap');
-      if (exam.idx + 1 < EXAM_QUESTIONS.length) {
+      if (exam.idx + 1 < exam.questions.length) {
         exam.idx += 1;
         renderExamQuestion();
       } else {
@@ -2843,15 +3172,17 @@
 
     function showExamRapor() {
       const total = currentExamTotal();
-      if (state.bestExamScore === null || total > state.bestExamScore) {
-        state.bestExamScore = total;
-      }
-      const bonusSeeds = Math.max(5, Math.round(total / 5));
-      addSeeds(bonusSeeds);
+      const prevBest = state.bestExamScore;
+      const isNewRecord = (prevBest === null || total > prevBest);
+      if (isNewRecord) state.bestExamScore = total;
+      const bonusSeeds = total >= 55 ? Math.round(total / 5) + (isNewRecord ? 5 : 0) : (total > 0 ? 2 : 0);
+      if (bonusSeeds > 0) addSeeds(bonusSeeds);
       saveState();
 
       let predikat = 'SEMANGAT BELAJAR!';
-      let msg = `Kamu meraih +${bonusSeeds} Biji Kebaikan! Terus murajaah 6 Klaster Ilmu dan Studio Hijaiyah ya.`;
+      let msg = bonusSeeds > 0
+        ? `Kamu meraih +${bonusSeeds} Biji Kebaikan! Murajaah dulu 6 Klaster Ilmu dan Studio Hijaiyah ya agar tembus nilai MUMTAZ!`
+        : 'Yuk pelajari dulu 6 Klaster Ilmu dan Studio Hijaiyah, lalu coba Ujian Bintang lagi!';
       if (total >= 85) {
         predikat = 'MUMTAZ!';
         msg = `MasyaAllah! Kamu berhak menerima Medali Akrilik Rub el Hizb digital & +${bonusSeeds} Biji Kebaikan!`;
@@ -2867,12 +3198,14 @@
         msg = `Bagus! Kamu sudah memahami dasar-dasarnya dan mendapat +${bonusSeeds} Biji Kebaikan.`;
       }
 
+      const tgl = new Intl.DateTimeFormat('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date());
       document.getElementById('examQuestionPane').classList.add('hidden');
       document.getElementById('examRaporPane').classList.remove('hidden');
       document.getElementById('bestExamPill').textContent = `Nilai Terbaik: ${state.bestExamScore} / 100`;
       document.getElementById('raporStudentName').textContent = state.childName || 'Santri Al-Muttaqin';
       document.getElementById('raporTotalScore').textContent = `${total} / 100`;
       document.getElementById('raporPredikat').textContent = predikat;
+      document.getElementById('raporDateLine').textContent = `Tanggal Evaluasi: ${tgl} • Majelis Ta'lim Al Muttaqin`;
       document.getElementById('raporMessage').textContent = msg;
 
       const rubricMeta = [
@@ -2896,6 +3229,24 @@
           <div class="rubric-track"><div class="rubric-fill" style="width:${pct}%;"></div></div>
         `;
         listEl.appendChild(row);
+      });
+    }
+
+    // Ensure older saved states (v5.0-v5.2) inherit default BGM seamlessly
+    if (typeof state.bgm !== 'boolean') state.bgm = true;
+
+    // Responsive pin labels when rotating phone/resizing
+    let pinResizeTimer = null;
+    window.addEventListener('resize', () => {
+      if (activeView !== 'home') return;
+      clearTimeout(pinResizeTimer);
+      pinResizeTimer = setTimeout(() => renderHome(), 180);
+    });
+
+    // PWA Offline Service Worker registration (GitHub Pages)
+    if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(() => {});
       });
     }
 

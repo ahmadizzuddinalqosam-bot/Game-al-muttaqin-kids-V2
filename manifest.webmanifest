@@ -1,16 +1,17 @@
 {
-  "name": "Al Muttaqin Kids — Petualangan Kampung Al-Muttaqin",
-  "short_name": "Al Muttaqin Kids",
-  "description": "Game edukasi anak interaktif Majelis Ta'lim Al Muttaqin (v5.0)",
+  "name": "Al Muttaqin Kids V2.5 — Petualangan Kampung Al-Muttaqin",
+  "short_name": "Al Muttaqin V2",
+  "description": "Seri Game #2 Majelis Ta'lim Al Muttaqin: Peta Kampung, Jejak Kebaikan, 6 Klaster Ilmu, Studio Hijaiyah 28 Huruf, dan Ujian Bintang MUMTAZ!",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#F8F4E6",
   "theme_color": "#0B6B3A",
   "icons": [
     {
-      "src": "assets/logo-majelis.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
